@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "usr",
+      "type": "com.imooc.pojo.MyConfig",
+      "sourceType": "com.imooc.pojo.MyConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "usr.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.imooc.pojo.MyConfig"
+    },
+    {
+      "name": "usr.name",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.pojo.MyConfig"
+    },
+    {
+      "name": "usr.sex",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.pojo.MyConfig"
+    }
+  ],
+  "hints": []
+}

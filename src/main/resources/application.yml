@@ -1,0 +1,55 @@
+server:
+  port: 8090
+
+app:
+  name: rocket
+
+com:
+  imooc:
+    host: 127.0.0.1
+    port: ${server.port}
+    name: ices
+
+#spring:
+#  banner:
+#    image:
+#      location: classpath:banner/lalala.jpg
+#      pixelmode: block
+
+#spring:
+#  mvc:
+#    static-path-pattern: /hhh/**
+spring:
+  profiles:
+    active: test
+  datasource:                                 # 数据源相关配置
+    type: com.zaxxer.hikari.HikariDataSource  # 指定数据源类型
+#    type: com.alibaba.druid.pool.DruidDataSource  # 引入自定义 druid 数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/imooc-springboot-learn?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 500KB
+      max-request-size: 1MB
+  thymeleaf:
+    prefix: classpath:/templates/html/
+    suffix: .html
+
+# Mybatis 相关配置
+mybatis:
+  type-aliases-package: com.imooc.pojo       # 所有数据库表逆向后，一一映射的实体类
+  mapper-locations: classpath:mappers/*.xml  # 所有 mapper 映射的文件所在目录
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 开启 mybatis 的日志实现，可以在控制台打印输入的 sql 语句
+# 通用 mapper 配置
+mapper:
+  mappers: com.imooc.my.mapper.MyMapper      # 所有 mapper 都需要实现的接口
+  not-empty: false                           # 数据库操作，判断为空时，是否需要增加不为空的判断 username != null,追加 username != ""
+  identity: MYSQL
+# 分页插件助手的配置
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
+  reasonable: true
